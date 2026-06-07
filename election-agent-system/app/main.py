@@ -45,11 +45,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+from pathlib import Path
+from fastapi.responses import RedirectResponse
+
+app.mount("/static", StaticFiles(directory=Path(__file__).parent / "static"), name="static")
 
 @app.get("/")
 def home():
-    return {"message": "Welcome to the Election Agent System!"}
+    return RedirectResponse(url="/static/index.html")
 
 @app.post("/verify")
 def verify_voter_endpoint(voter_request: VoterRequest):
