@@ -54,6 +54,10 @@ app.mount("/static", StaticFiles(directory=Path(__file__).parent / "static"), na
 def home():
     return RedirectResponse(url="/static/index.html")
 
+@app.get("/dashboard")
+def dashboard():
+    return RedirectResponse(url="/static/dashboard.html")
+
 @app.post("/verify")
 def verify_voter_endpoint(voter_request: VoterRequest):
     print("Function entered")
