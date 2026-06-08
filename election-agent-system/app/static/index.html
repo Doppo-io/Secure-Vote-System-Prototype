@@ -872,7 +872,7 @@
     msg.className = 'msg';
 
     try {
-      const res = await fetch(`${API}/verify/`, {
+      const res = await fetch(`${API}/verify`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ voter_id: voterId, fingerprint })
@@ -923,7 +923,7 @@
     btn.innerHTML = '<span class="spinner"></span>Submitting...';
 
     try {
-      const res = await fetch(`${API}/vote/`, {
+      const res = await fetch(`${API}/vote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token: sessionToken, candidate: selectedCandidate })
